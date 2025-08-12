@@ -9,10 +9,19 @@ npm install
 npm run dev
 npm run build
 
+# Once the server is running, open your browser and visit:
+
+http://localhost:5173
+to access the app.
+
+# Purpose
+The purpose of this software is to provide a simple, visually appealing, and responsive platform for users to create, edit, and manage tasks. It focuses on enhancing productivity through an organized interface.
+
 # TaskNest 🪺
 
 TaskNest is a task management web application designed to help you organize, track, and complete your daily tasks efficiently.  
 It uses **pgAdmin (PostgreSQL)** for database management and is built with a **React frontend** and **Node.js backend**.
+
 
 ---
 
