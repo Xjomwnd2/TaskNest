@@ -48,4 +48,4 @@ It uses **pgAdmin (PostgreSQL)** for database management and is built with a **R
    git clone https://github.com/yourusername/tasknest.git
    cd tasknest
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=tnrHux2ZCHA/)
