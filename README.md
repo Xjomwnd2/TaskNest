@@ -1,3 +1,14 @@
+# Overview
+
+TaskNest is a lightweight and intuitive task management web application designed to help users organize, track, and complete their daily tasks with ease. My goal in creating TaskNest was to sharpen my full-stack development skills by building a real-world, interactive web app that combines frontend design with backend functionality. This project allowed me to work with dynamic data rendering, form handling, and user interaction flows.
+
+To run the app locally, clone the repository, navigate to the project directory in your terminal, and start the development server:
+
+```bash
+npm install
+npm run dev
+npm run build
+
 # TaskNest 🪺
 
 TaskNest is a task management web application designed to help you organize, track, and complete your daily tasks efficiently.  
@@ -27,4 +38,3 @@ It uses **pgAdmin (PostgreSQL)** for database management and is built with a **R
    ```bash
    git clone https://github.com/yourusername/tasknest.git
    cd tasknest
-   
