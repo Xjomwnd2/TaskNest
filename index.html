@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smooth Live Date & Time</title>
+
+<style>
+/* CSS */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	background: #f5f5f5;
+}
+
+h2 {
+	margin-bottom: 0.5rem;
+}
+main {
+	border: 1px solid #bbb;
+	padding: 1rem;
+	background-color: #bed;
+	box-shadow: 0 0 20px rgba(0,0,0,.1);
+	border-radius: 10px;
+}
+
+p {
+	margin: 1rem;
+	border: 1px solid rgba(0,0,0,.1);
+	padding: 0.5rem;
+	background-color: #eee;
+	font-size: smaller;
+	border-radius: 5px;
+}
+
+fieldset {
+	margin: 1.5rem;
+	border-radius: 5px;
+}
+span {
+	font-weight: 700;
+}
+#date1 {
+	color: forestgreen;
+}
+.time {
+	color: darkblue;
+	margin-left: 10px;
+	opacity: 1;
+	transition: opacity 0.4s ease-in-out;
+}
+.fade-out {
+	opacity: 0;
+}
+</style>
+</head>
+<body>
+
+<h2>Get the Current Date & Time</h2>
+<main>
+	<p>Desired Format: <strong>long day of week, date month year</strong> + <strong>current time</strong></p>
+	<fieldset>
+		<legend>toLocaleDateString Method</legend> 
+		<span id="date1"></span> <span class="time" id="time1"></span>
+	</fieldset>
+	<fieldset>
+		<legend>Custom Build using Date Methods (Old)</legend>
+		<span id="date2"></span> <span class="time" id="time2"></span>
+	</fieldset>
+</main>
+
+<script>
+// Function to update both date formats + live time
+function updateDateTime() {
+	const now = new Date();
+
+	// Method 1: Using toLocaleDateString
+	try {
+		const options = {
+			weekday: "long",
+			day: "numeric",
+			month: "long",
+			year: "numeric"
+		};
+		document.querySelector("#date1").textContent = now.toLocaleDateString("en-GB", options);
+	} catch (e) {
+		alert("Error with code or your browser does not support Locale");
+	}
+
+	// Method 2: Manual build
+	const daynames = [
+		"Sunday", "Monday", "Tuesday", "Wednesday",
+		"Thursday", "Friday", "Saturday"
+	];
+	const months = [
+		"January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December"
+	];
+
+	const dayName = daynames[now.getDay()];
+	const monthName = months[now.getMonth()];
+	const year = now.getFullYear();
+	const fulldate = `${dayName}, ${now.getDate()} ${monthName} ${year}`;
+
+	document.querySelector("#date2").textContent = fulldate;
+
+	// Fade out before updating time
+	fadeTime("#time1", now.toLocaleTimeString());
+	fadeTime("#time2", now.toLocaleTimeString());
+}
+
+// Smooth fade animation function
+function fadeTime(selector, newTime) {
+	const timeElem = document.querySelector(selector);
+	timeElem.classList.add("fade-out");
+
+	setTimeout(() => {
+		timeElem.textContent = newTime;
+		timeElem.classList.remove("fade-out");
+	}, 400); // matches CSS transition duration
+}
+
+// Run immediately and then every second
+updateDateTime();
+setInterval(updateDateTime, 1000);
+</script>
+
+</body>
+</html>
